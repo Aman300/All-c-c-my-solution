@@ -1,0 +1,136 @@
+#include<stdio.h>
+#include<stdlib.h>
+int arr[10],size=10,cur=-1;
+
+int isEmpty()
+{
+    if(cur==-1)
+        return 1;
+    else
+        return 0;
+}
+
+int isFull()
+{                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              																																																																								
+    if(cur==size-1)
+        return 1;
+    else
+        return 0;
+}
+
+int accept()
+{
+    int ele;
+    printf("Enter the element:");
+    scanf("%d",&ele);
+    return ele;
+}
+
+void insertatbeg()
+{
+    if(isFull())
+    {
+        printf("Array is Full, can't insert an element.");   
+    }
+    else
+    {
+        if(isEmpty())
+        {
+            arr[++cur]=accept();
+        }
+        else
+        {
+            int i;
+	    for(i=cur;i>=0;i--)
+                arr[i+1]=arr[i];
+            arr[0]=accept();
+            cur++;
+        }
+        printf("Element is inserted successfully.");
+    }
+}
+
+void display()
+{
+    int i;
+    printf("Array elements:\n");
+    if(isEmpty())
+        printf("Array is empty.");
+    else
+    {
+        for(i=0;i<=cur;i++)
+            printf("arr[%d]=%d \n",i,arr[i]);
+    }
+}  
+void insertatend()
+{
+    if(isFull())
+    {
+        printf("Array is Full, can't insert an element.");
+    }
+    else
+    {
+        arr[++cur]=accept();
+    }
+        printf("Element is inserted successfully.");
+}
+void specificpos()
+{
+    if(isFull())
+    {
+        printf("Array is Full, can't insert an element.");
+    }
+    else
+    {
+        int i,pos;
+        printf("Enter the specific position:");
+        scanf("%d",&pos);
+        for(i=cur;i>=pos-1;i--)
+            arr[i+1]=arr[i];
+        arr[pos-1]=accept();
+        printf("Element is inserted successfully.");
+        cur++;
+    }
+        
+}
+
+
+int main()
+{
+   int ch;
+   while(1)
+   {
+       printf("***********************Array Operations***********************\n");
+       printf("1. Insert at beginning\n");
+       printf("2. Insert at specific position\n");
+       printf("3. Insert at end\n");
+       printf("4. Display array elements\n");
+       printf("5. Delete from beginning\n");
+       printf("6. Delete from specific position\n");
+       printf("7. Delete from end\n");
+       printf("8. Search an element using Linear Search\n");
+       printf("9. Search an element using Binary Search(Array must be sorted)\n");
+       printf("10. Sort the array elements\n");
+       printf("11. Exit from program\n");
+       printf("**************************************************************\n");
+       printf("Enter the choice:");
+       scanf("%d",&ch);
+       switch(ch)
+       {
+            case 1:insertatbeg();
+                    break;
+            case 3:insertatend();
+                    break;
+            case 2:specificpos();
+                    break;
+            case 4:display();
+                    break;
+            case 11:exit(0);
+                    break;
+            default:printf("ERROR!!!Please enter the valid choice....");
+       }
+       printf("\n");
+   }
+   return 0;
+}
+
