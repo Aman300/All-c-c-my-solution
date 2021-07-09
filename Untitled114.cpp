@@ -8,5 +8,6 @@ int main()
 	for(i=0;i<5;i++)
 		scanf("%s",arr[i]);
 	for(i=0;i<5;i++)
-		printf("[%d] = %s\n",i,arr[i]);		
+		printf("[%d] = %s\n",i,arr[i]);	
+	return 0;
 }
