@@ -1,0 +1,54 @@
+#include<iostream>
+using namespace std;
+class Time{
+    private:
+    int h,m,s;
+    public:
+    Time()
+    {
+        h=0;
+        m=0;
+        s=0;
+    }
+    void settime()
+    {
+        cout<<"Enter the time in hour(0-11):";
+        cin>>h;
+        cout<<"Enter the time in minute(0-59):";
+        cin>>m;
+        cout<<"Enter the time in second(0-59):";
+        cin>>s;
+    }
+    Time operator +(Time t1)
+    {
+        Time t;
+        int a,b;
+        a=s+t1.s;
+        t.s=a%60;
+        b=(a/60)+m+t1.m;
+        t.m=b%60;
+        t.h=(b/60)+h+t1.h;
+        t.h=t.h%12;
+        return t;
+    }
+    void show()
+    {
+        cout<<h<<" : "<<m<<" : "<<s;
+    }
+};
+int main()
+{
+    Time t1,t2,t3;
+    cout<<"Enter the first time:"<<"\n";
+    t1.settime();
+    cout<<"Enter the secont time:"<<"\n";
+    t2.settime();
+    t3=t1+t2;
+    cout<<"\n First time:";
+    t2.show();
+    cout<<"\n second time:";
+    t1.show();
+    cout<<"\n sum of time:";
+    t3.show();
+    return 0;
+}
